@@ -1,0 +1,16 @@
+version: "3"
+
+tasks:
+  proto:
+    desc: Generate gRPC code from proto files
+    aliases:
+      -   gen
+    cmds:
+      - >
+        protoc
+        -I proto
+        proto/ahub/*.proto
+        --go_out=./gen/go
+        --go_opt=paths=source_relative
+        --go-grpc_out=./gen/go
+        --go-grpc_opt=paths=source_relative
